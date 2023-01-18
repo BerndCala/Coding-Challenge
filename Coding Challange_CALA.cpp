@@ -100,10 +100,21 @@ int main()
         string answers;
         getline(cin >> ws,add_question);    // ws....white space
         int pos = add_question.find("?");
+        if(pos+1 == add_question.size())
+        {
+            cout << "You need at least one answer to your question!" << endl;
+            return 0;
+        }
         answers = add_question.substr(pos + 2);
-        answers.resize(255);                //Restrictions 255 chars
+        if(answers.size() > 255)
+        {
+            answers.resize(255);            //Restrictions 255 chars
+        }
         question = add_question.substr(0,pos + 1);
-        question.resize(255);               //Restrictions 255 chars
+        if(question.size() > 255)
+        {
+            question.resize(255);            //Restrictions 255 chars
+        }
         questions_list.push_back(question);
         answers_list.push_back(answers);
         cout << "Your question has been added." << endl;
